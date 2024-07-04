@@ -103,6 +103,23 @@ module.exports = (env) => {
             },
           ],
         },
+        {
+          test: /\.(png|jpe?g|gif)$/i,
+          type: 'asset',
+          parser: {
+            dataUrlCondition: {
+              maxSize: 5 * 1024 // 5KB
+            }
+          },
+          include: [
+            path.resolve(__dirname, 'src'),
+            path.resolve(__dirname, 'node_modules/@patternfly/react-core/dist/styles/assets'),
+            // Add any other directories that might contain your image files
+          ],
+          generator: {
+            filename: 'images/[hash][ext][query]'
+          }
+        },
       ],
     },
     output: {
@@ -119,7 +136,10 @@ module.exports = (env) => {
         silent: true,
       }),
       new CopyPlugin({
-        patterns: [{ from: './src/favicon.png', to: 'images' }],
+        patterns: [
+          { from: './src/favicon.png', to: 'images/favicon.png' },
+          { from: './src/Ilion_logo_symbol_yellow.png', to: 'images/Ilion_logo_symbol_yellow.png' }
+        ],
       }),
     ],
     resolve: {
