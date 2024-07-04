@@ -6,6 +6,7 @@ import { GeneralSettings } from '@app/Settings/General/GeneralSettings';
 import { ProfileSettings } from '@app/Settings/Profile/ProfileSettings';
 import { NotFound } from '@app/NotFound/NotFound';
 import { useDocumentTitle } from '@app/utils/useDocumentTitle';
+import { Test } from '@app/Test/Test';
 
 let routeFocusTimer: number;
 export interface IAppRoute {
@@ -59,6 +60,13 @@ const routes: AppRouteConfig[] = [
         title: 'PatternFly Seed | Profile Settings',
       },
     ],
+  },
+  {
+    component: Test,
+    exact: true,
+    label: 'Test',
+    path: '/test',
+    title: 'PatternFly Seed | Test Page',
   },
 ];
 
